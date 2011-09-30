@@ -57,6 +57,7 @@
     this.$element = $(content)
       .delegate('.close', 'click.modal', $.proxy(this.hide, this))
 
+    this.$element.removeClass('su_bootstrap_safe').addClass('su_bootstrap_safe')
     if ( options ) {
       $.extend( this.settings, options )
 
@@ -136,7 +137,7 @@
     if ( this.isShown && this.settings.backdrop ) {
       var doAnimate = $.support.transition && animate
 
-      this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
+      this.$backdrop = $('<div class="modal-backdrop su_bootstrap_safe ' + animate + '" />')
         .appendTo(document.body)
 
       if ( this.settings.backdrop != 'static' ) {
