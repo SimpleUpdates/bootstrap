@@ -813,7 +813,7 @@ input[type=submit].btn {
 // MODALS
 // ------
 
-.modal-backdrop {
+&.modal-backdrop {
   background-color: @black;
   position: fixed;
   top: 0;
@@ -825,12 +825,12 @@ input[type=submit].btn {
   &.fade { opacity: 0; }
 }
 
-.modal-backdrop,
-.modal-backdrop.fade.in {
+&.modal-backdrop,
+&.modal-backdrop.fade.in {
   .opacity(80);
 }
 
-.modal {
+&.modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -1005,7 +1005,7 @@ input[type=submit].btn {
 // PATTERN ANIMATIONS
 // ------------------
 
-.fade {
+&.fade, .fade {
   .transition(opacity .15s linear);
   opacity: 0;
   &.in {
