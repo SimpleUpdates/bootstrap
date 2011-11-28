@@ -120,7 +120,7 @@
   , setContent: function () {
       var $tip = this.tip()
       $tip.find('.twipsy-inner')[this.options.html ? 'html' : 'text'](this.getTitle())
-      $tip[0].className = 'twipsy'
+      $tip[0].className = 'twipsy su_bootstrap_safe'
     }
 
   , hide: function() {

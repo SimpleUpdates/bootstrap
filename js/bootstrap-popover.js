@@ -38,7 +38,7 @@
       var $tip = this.tip()
       $tip.find('.title')[this.options.html ? 'html' : 'text'](this.getTitle())
       $tip.find('.content > *')[this.options.html ? 'html' : 'text'](this.getContent())
-      $tip[0].className = 'popover'
+      $tip[0].className = 'popover su_bootstrap_safe'
     }
 
   , hasContent: function () {
