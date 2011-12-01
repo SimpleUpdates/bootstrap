@@ -1,12 +1,12 @@
-.com { color: #93a1a1; }
-.lit { color: #195f91; }
-.pun, .opn, .clo { color: #93a1a1; }
-.fun { color: #dc322f; }
-.str, .atv { color: #268bd2; }
-.kwd, .tag { color: #195f91; }
-.typ, .atn, .dec, .var { color: #CB4B16; }
-.pln { color: #93a1a1; }
-.prettyprint {
+.su_bootstrap_safe .com { color: #93a1a1; }
+.su_bootstrap_safe .lit { color: #195f91; }
+.su_bootstrap_safe .pun, .su_bootstrap_safe .opn, .su_bootstrap_safe .clo { color: #93a1a1; }
+.su_bootstrap_safe .fun { color: #dc322f; }
+.su_bootstrap_safe .str, .su_bootstrap_safe .atv { color: #268bd2; }
+.su_bootstrap_safe .kwd, .su_bootstrap_safe .tag { color: #195f91; }
+.su_bootstrap_safe .typ, .su_bootstrap_safe .atn, .su_bootstrap_safe .dec, .su_bootstrap_safe .var { color: #CB4B16; }
+.su_bootstrap_safe .pln { color: #93a1a1; }
+.su_bootstrap_safe .prettyprint {
   background-color: #fefbf3;
   padding: 9px;
   border: 1px solid rgba(0,0,0,.2);
@@ -16,11 +16,11 @@
 }
 
 /* Specify class=linenums on a pre to get line numbering */
-ol.linenums {
+.su_bootstrap_safe ol.linenums {
   margin: 0 0 0 40px;
 }
 /* IE indents via margin-left */
-ol.linenums li {
+.su_bootstrap_safe ol.linenums li {
   padding: 0 5px;
   color: rgba(0,0,0,.15);
   line-height: 20px;
@@ -29,7 +29,7 @@ ol.linenums li {
           border-radius: 2px;
 }
 /* Alternate shading for lines */
-li.L1, li.L3, li.L5, li.L7, li.L9 {  }
+.su_bootstrap_safe li.L1, .su_bootstrap_safe li.L3, .su_bootstrap_safe li.L5, .su_bootstrap_safe li.L7, .su_bootstrap_safe li.L9 {  }
 
 /*
 $base03:    #002b36;
@@ -70,25 +70,25 @@ $green:     #859900;
 /* DARK THEME */
 /* ---------- */
 
-.prettyprint-dark {
+.su_bootstrap_safe .prettyprint-dark {
   background-color: #1d1f21;
   border: 0;
   padding: 10px;
 }
-.prettyprint-dark .linenums li {
+.su_bootstrap_safe .prettyprint-dark .linenums li {
   color: #444;
 }
-.prettyprint-dark .linenums li:hover {
+.su_bootstrap_safe .prettyprint-dark .linenums li:hover {
   background-color: #282a2e;
 }
 /* tags in html */
-.prettyprint-dark .kwd,
-.prettyprint-dark .tag { color: #cc6666; }
+.su_bootstrap_safe .prettyprint-dark .kwd,
+.su_bootstrap_safe .prettyprint-dark .tag { color: #cc6666; }
 /* html attr */
-.prettyprint-dark .typ,
-.prettyprint-dark .atn,
-.prettyprint-dark .dec,
-.prettyprint-dark .var { color: #de935f; }
+.su_bootstrap_safe .prettyprint-dark .typ,
+.su_bootstrap_safe .prettyprint-dark .atn,
+.su_bootstrap_safe .prettyprint-dark .dec,
+.su_bootstrap_safe .prettyprint-dark .var { color: #de935f; }
 /* html attr values */
-.prettyprint-dark .str,
-.prettyprint-dark .atv { color: #b5bd68; }
+.su_bootstrap_safe .prettyprint-dark .str,
+.su_bootstrap_safe .prettyprint-dark .atv { color: #b5bd68; }
