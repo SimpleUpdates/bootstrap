@@ -29,6 +29,7 @@
     this.options = options
     this.$element = $(content)
       .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
+    this.$element.removeClass('su_bootstrap_safe').addClass('su_bootstrap_safe')
   }
 
   Modal.prototype = {
@@ -126,7 +127,7 @@
     if (this.isShown && this.options.backdrop) {
       var doAnimate = $.support.transition && animate
 
-      this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
+      this.$backdrop = $('<div class="modal-backdrop su_bootstrap_safe ' + animate + '" />')
         .appendTo(document.body)
 
       if (this.options.backdrop != 'static') {
