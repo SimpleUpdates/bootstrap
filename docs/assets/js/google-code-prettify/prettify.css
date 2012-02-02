@@ -1,30 +1,30 @@
-.com { color: #93a1a1; }
-.lit { color: #195f91; }
-.pun, .opn, .clo { color: #93a1a1; }
-.fun { color: #dc322f; }
-.str, .atv { color: #D14; }
-.kwd, .prettyprint .tag { color: #1e347b; }
-.typ, .atn, .dec, .var { color: teal; }
-.pln { color: #48484c; }
+.su_bootstrap_safe .com { color: #93a1a1; }
+.su_bootstrap_safe .lit { color: #195f91; }
+.su_bootstrap_safe .pun, .su_bootstrap_safe .opn, .su_bootstrap_safe .clo { color: #93a1a1; }
+.su_bootstrap_safe .fun { color: #dc322f; }
+.su_bootstrap_safe .str, .su_bootstrap_safe .atv { color: #D14; }
+.su_bootstrap_safe .kwd, .su_bootstrap_safe .linenums .tag { color: #1e347b; }
+.su_bootstrap_safe .typ, .su_bootstrap_safe .atn, .su_bootstrap_safe .dec, .su_bootstrap_safe .var { color: teal; }
+.su_bootstrap_safe .pln { color: #48484c; }
 
-.prettyprint {
+.su_bootstrap_safe .prettyprint {
   padding: 8px;
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
 }
-.prettyprint.linenums {
+.su_bootstrap_safe .prettyprint.linenums {
   -webkit-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
      -moz-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
           box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
 }
 
 /* Specify class=linenums on a pre to get line numbering */
-ol.linenums {
+.su_bootstrap_safe ol.linenums {
   margin: 0 0 0 33px; /* IE indents via margin-left */
-}
-ol.linenums li {
+} 
+.su_bootstrap_safe ol.linenums li {
   padding-left: 12px;
   color: #bebec5;
-  line-height: 20px;
+  line-height: 18px;
   text-shadow: 0 1px 0 #fff;
 }
