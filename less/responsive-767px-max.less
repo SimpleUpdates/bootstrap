@@ -1,3 +1,4 @@
+.su_bootstrap_safe {
 // UP TO LANDSCAPE PHONE
 // ---------------------
 
@@ -135,7 +136,7 @@
   select[class*="span"],
   textarea[class*="span"],
   .uneditable-input {
-    .input-block-level();
+    .su_bootstrap_safe .input-block-level();
   }
   // But don't let it screw up prepend/append inputs
   .input-prepend input,
@@ -146,4 +147,5 @@
     width: auto;
   }
 
+}
 }
