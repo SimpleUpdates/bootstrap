@@ -32,6 +32,8 @@
       .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
     this.$element.removeClass('su_bootstrap_safe').addClass('su_bootstrap_safe')
   }
+  
+  var openedModals = []
 
   Modal.prototype = {
 
@@ -50,6 +52,9 @@
         if (this.isShown || e.isDefaultPrevented()) return
 
         $('body').addClass('modal-open')
+		
+		// SU focused modal hack
+		$(openedModals).removeClass('focused');	for( var i = 0; i < openedModals.length; i++ ) { var $modal = openedModals[i]; $modal.removeClass('focused'); }	this.$element.addClass('focused'); openedModals.push(this.$element);
 
         this.isShown = true
 
@@ -78,6 +83,7 @@
       }
 
     , hide: function (e) {
+		if( ! this.$element.hasClass('focused') ) return;
         e && e.preventDefault()
 
         var that = this
@@ -90,15 +96,15 @@
 
         this.isShown = false
 
-        $('body').removeClass('modal-open')
+        openedModals.length <= 1 && $('body').removeClass('modal-open')
 
         escape.call(this)
-
-        this.$element.removeClass('in')
+		
+        this.$element.removeClass('in focused'); openedModals.pop()
 
         $.support.transition && this.$element.hasClass('fade') ?
           hideWithTransition.call(this) :
-          hideModal.call(this)
+          hideModal.call(this)	  
       }
 
   }
@@ -126,6 +132,7 @@
       .trigger('hidden')
 
     backdrop.call(this)
+	var previousModal = openedModals[openedModals.length - 1]; previousModal && previousModal.addClass('focused');
   }
 
   function backdrop(callback) {
@@ -171,9 +178,9 @@
     var that = this
     if (this.isShown && this.options.keyboard) {
       $(document).on('keyup.dismiss.modal', function ( e ) {
-        e.which == 27 && that.hide()
+        e.which == 27 && $('.modal.focused').modal('hide')
       })
-    } else if (!this.isShown) {
+    } else if (!this.isShown && openedModals.length <= 1) {
       $(document).off('keyup.dismiss.modal')
     }
   }
