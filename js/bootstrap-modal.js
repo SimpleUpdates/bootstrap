@@ -31,7 +31,10 @@
     this.$element = $(element)
       .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
     this.options.remote && this.$element.find('.modal-body').load(this.options.remote)
+    this.$element.removeClass('su_bootstrap_safe').addClass('su_bootstrap_safe')
   }
+  
+  var openedModals = []
 
   Modal.prototype = {
 
@@ -48,7 +51,10 @@
         this.$element.trigger(e)
 
         if (this.isShown || e.isDefaultPrevented()) return
-
+	
+		// SU focused modal hack
+		$(openedModals).removeClass('focused');	for( var i = 0; i < openedModals.length; i++ ) { var $modal = openedModals[i]; $modal.removeClass('focused'); }	this.$element.addClass('focused'); openedModals.push(this.$element);
+		
         this.isShown = true
 
         this.escape()
@@ -81,6 +87,8 @@
       }
 
     , hide: function (e) {
+    	if( ! this.$element.hasClass('focused') ) return;
+    	
         e && e.preventDefault()
 
         var that = this
@@ -92,14 +100,16 @@
         if (!this.isShown || e.isDefaultPrevented()) return
 
         this.isShown = false
-
+        
         this.escape()
 
-        $(document).off('focusin.modal')
+        openedModals.length <= 1 && $(document).off('focusin.modal')
 
         this.$element
-          .removeClass('in')
+          .removeClass('in focused')
           .attr('aria-hidden', true)
+        
+        openedModals.pop()
 
         $.support.transition && this.$element.hasClass('fade') ?
           this.hideWithTransition() :
@@ -119,9 +129,9 @@
         var that = this
         if (this.isShown && this.options.keyboard) {
           this.$element.on('keyup.dismiss.modal', function ( e ) {
-            e.which == 27 && that.hide()
+            e.which == 27 && $('.modal.focused').modal('hide')
           })
-        } else if (!this.isShown) {
+        } else if (!this.isShown && openedModals.length <= 1) {
           this.$element.off('keyup.dismiss.modal')
         }
       }
@@ -145,6 +155,7 @@
           .trigger('hidden')
 
         this.backdrop()
+        var previousModal = openedModals[openedModals.length - 1]; previousModal && previousModal.addClass('focused');
       }
 
     , removeBackdrop: function () {
@@ -159,7 +170,7 @@
         if (this.isShown && this.options.backdrop) {
           var doAnimate = $.support.transition && animate
 
-          this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
+          this.$backdrop = $('<div class="modal-backdrop su_bootstrap_safe ' + animate + '" />')
             .appendTo(document.body)
 
           this.$backdrop.click(

@@ -3,7 +3,7 @@
 // --------------------------------------------------
 
 // Background
-.modal-backdrop {
+&.modal-backdrop {
   position: fixed;
   top: 0;
   right: 0;
@@ -15,13 +15,13 @@
   &.fade { opacity: 0; }
 }
 
-.modal-backdrop,
-.modal-backdrop.fade.in {
+&.modal-backdrop,
+&.modal-backdrop.fade.in {
   .opacity(80);
 }
 
 // Base modal
-.modal {
+&.modal {
   position: fixed;
   top: 50%;
   left: 50%;
