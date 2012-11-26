@@ -128,11 +128,11 @@
     , escape: function () {
         var that = this
         if (this.isShown && this.options.keyboard) {
-          this.$element.on('keyup.dismiss.modal', function ( e ) {
+          $(document).on('keyup.dismiss.modal', function ( e ) {
             e.which == 27 && $('.modal.focused').modal('hide')
           })
         } else if (!this.isShown && openedModals.length <= 1) {
-          this.$element.off('keyup.dismiss.modal')
+          $(document).off('keyup.dismiss.modal')
         }
       }
 
