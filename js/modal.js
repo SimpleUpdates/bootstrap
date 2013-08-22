@@ -37,6 +37,8 @@
     , keyboard: true
     , show: true
   }
+  
+  var openedModals = []
 
   Modal.prototype.toggle = function (_relatedTarget) {
     return this[!this.isShown ? 'show' : 'hide'](_relatedTarget)
@@ -49,12 +51,15 @@
     this.$element.trigger(e)
 
     if (this.isShown || e.isDefaultPrevented()) return
-
+	
+	// SU focused modal hack
+	$(openedModals).removeClass('focused');	for( var i = 0; i < openedModals.length; i++ ) { var $modal = openedModals[i]; $modal.removeClass('focused'); }	this.$element.addClass('focused'); openedModals.push(this.$element); 
+	
     this.isShown = true
 
     this.escape()
 
-    this.$element.on('click.dismiss.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
+	this.$element.on('click.dismiss.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
 
     this.backdrop(function () {
       var transition = $.support.transition && that.$element.hasClass('fade')
@@ -103,9 +108,11 @@
     $(document).off('focusin.bs.modal')
 
     this.$element
-      .removeClass('in')
+      .removeClass('in focused')
       .attr('aria-hidden', true)
       .off('click.dismiss.modal')
+	  
+	openedModals.pop();
 
     $.support.transition && this.$element.hasClass('fade') ?
       this.$element
@@ -127,9 +134,9 @@
   Modal.prototype.escape = function () {
     if (this.isShown && this.options.keyboard) {
       this.$element.on('keyup.dismiss.bs.modal', $.proxy(function (e) {
-        e.which == 27 && this.hide()
+        e.which == 27 && $('.modal.focused').modal('hide')
       }, this))
-    } else if (!this.isShown) {
+    } else if (!this.isShown && openedModals.length <= 1) {
       this.$element.off('keyup.dismiss.bs.modal')
     }
   }
@@ -141,6 +148,7 @@
       that.removeBackdrop()
       that.$element.trigger('hidden.bs.modal')
     })
+	var previousModal = openedModals[openedModals.length - 1]; previousModal && previousModal.addClass('focused')
   }
 
   Modal.prototype.removeBackdrop = function () {
@@ -241,6 +249,6 @@
 
   $(document)
     .on('show.bs.modal',  '.modal', function () { $(document.body).addClass('modal-open') })
-    .on('hidden.bs.modal', '.modal', function () { $(document.body).removeClass('modal-open') })
+    .on('hidden.bs.modal', '.modal', function () { openedModals.length <= 1 && $(document.body).removeClass('modal-open') })
 
 }(window.jQuery);
