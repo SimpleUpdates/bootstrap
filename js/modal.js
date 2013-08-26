@@ -30,6 +30,7 @@
     this.isShown   = null
 
     if (this.options.remote) this.$element.load(this.options.remote)
+    this.$element.removeClass('su_bootstrap_safe').addClass('su_bootstrap_safe')
   }
 
   Modal.DEFAULTS = {
@@ -163,7 +164,7 @@
     if (this.isShown && this.options.backdrop) {
       var doAnimate = $.support.transition && animate
 
-      this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
+      this.$backdrop = $('<div class="modal-backdrop su_bootstrap_safe ' + animate + '" />')
         .appendTo(document.body)
 
       this.$element.on('click.dismiss.modal', $.proxy(function (e) {
