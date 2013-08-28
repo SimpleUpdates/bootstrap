@@ -249,7 +249,7 @@
   })
 
   $(document)
-    .on('show.bs.modal',  '.modal', function () { $(document.body).addClass('modal-open') })
-    .on('hidden.bs.modal', '.modal', function () { openedModals.length <= 1 && $(document.body).removeClass('modal-open') })
+    .on('show.bs.modal',  '.modal', function () { $(document.body).addClass('su_bootstrap_safe modal-open') })
+    .on('hidden.bs.modal', '.modal', function () { openedModals.length <= 1 && $(document.body).removeClass('su_bootstrap_safe modal-open') })
 
 }(window.jQuery);
