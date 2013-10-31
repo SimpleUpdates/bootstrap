@@ -8,12 +8,12 @@
 // .modal-content   - actual modal w/ bg and corners and shit
 
 // Kill the scroll on the body
-.modal-open {
+&.modal-open, .modal-open {
   overflow: hidden;
 }
 
 // Container that the modal scrolls within
-.modal {
+&.modal, .modal {
   display: none;
   overflow: auto;
   overflow-y: scroll;
@@ -56,7 +56,7 @@
 }
 
 // Modal background
-.modal-backdrop {
+&.modal-backdrop {
   position: fixed;
   top: 0;
   right: 0;
